@@ -1,8 +1,9 @@
-from . import db
-from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import UserMixin
+from enum import unique
+from flask_sqlalchemy.model import Model
+from . import db,login_manager
 from datetime import datetime
-from . import login_manager
+from flask_login import UserMixin,current_user
+from werkzeug.security import generate_password_hash,check_password_hash
 
 @login_manager.user_loader
 def load_user(user_id):
