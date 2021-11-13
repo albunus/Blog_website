@@ -2,7 +2,7 @@
 
 {% block styles%}
 {{ super() }}
-<link rel="stylesheet" href="{{url_for('static',filename='css/quotes.css')}}" type="text/css">
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}" type="text/css">
 {% endblock styles%}
 
 {%block content%}
@@ -13,7 +13,7 @@
             <blockquote class="blockquote mb-0 card-body">
                 <p>{{quote.quote}}</p>
                 <footer class="blockquote-footer">
-                    <cite title="Source Title" style="color: maroon;" >{{quote.author| upper}}</cite>
+                    <cite title="Source Title" style="color: green;" >{{quote.author}}</cite>
                     
                 </footer>
                 

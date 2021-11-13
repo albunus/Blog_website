@@ -15,16 +15,5 @@ from ..email import mail_message
 #Views
 @main.route('/')
 def index():
-    '''
-    main
-    '''
-    return render_template('index.html')
-@main.route('/quotes')
-def quotes():
-
-    '''
-    '''
     quote = get_quote()
-    title = 'LetsBlog | Quotes'
-    
-    return render_template('quotes.html', title = title,quote = quote)
+    return render_template('index.html',quote = quote)
