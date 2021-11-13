@@ -99,3 +99,11 @@ def comment(blog_id):
     new_comment = Comment(comment = comment, user_id = current_user._get_current_object().id, blog_id=blog_id)
     new_comment.save()
     return redirect(url_for('main.blog',id = blog.id))
+
+@main.route('/subscribe',methods = ['POST','GET'])
+def subscribe():
+    email = request.form.get('subscriber')
+    new_subscriber = Subscriber(email = email)
+    new_subscriber.save_subscriber()
+    mail_message("Subscribed to Niche Blogs","email/welcome_subscriber",new_subscriber.email,new_subscriber=new_subscriber)
+    return redirect(url_for('main.index'))
