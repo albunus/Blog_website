@@ -41,6 +41,31 @@ class User(UserMixin,db.Model):
   def __repr__(self):
     return f'User {self.username}'
   
+class Blog(db.Model):
+  __tablename__ = 'blogs'
+  id = db.Column(db.Integer, primary_key = True)
+  title = db.Column(db.String(255),nullable = False)
+  description = db.Column(db.Text(), nullable = False)
+  content = db.Column(db.Text(), nullable = False)
+  user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+  time = db.Column(db.DateTime, default = datetime.utcnow)
+  comment = db.relationship('Comment', backref='blog', lazy='dynamic')
+
+  def save(self):
+    db.session.add(self)
+    db.session.commit()
+
+  def delete(self):
+    db.session.delete(self)
+    db.session.commit()
+
+  def get_blog(id):
+    blog = Blog.query.filter_by(id=id).first()
+    return blog
+
+  def __repr__(self):
+    return f'Blog {self.title}'
+  
 class Quote:
   """
   Blueprint class for quotes consumed from API
