@@ -1,14 +1,14 @@
-from enum import unique
-from . import db,login_manager
+from . import db
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
 from datetime import datetime
-from flask_login import UserMixin,current_user
-from werkzeug.security import generate_password_hash,check_password_hash
+from . import login_manager
 
 @login_manager.user_loader
 def load_user(user_id):
   return User.query.get(user_id)
 
-# roles table
+
 class Role(db.Model):
     __tablename__ = 'roles'
     id = db.Column(db.Integer, primary_key=True)
@@ -26,8 +26,9 @@ class User(UserMixin,db.Model):
   secure_password = db.Column(db.String(255),nullable = False)
   bio = db.Column(db.String(255))
   profile_pic_path = db.Column(db.String())
-
-
+  role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
+  blogs = db.relationship('Blog', backref='user', lazy='dynamic')
+  comment = db.relationship('Comment', backref='user', lazy='dynamic')
 
   @property
   def set_password(self):
