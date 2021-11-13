@@ -18,6 +18,23 @@ def index():
     blogs = Blog.query.order_by(Blog.time.desc())
     return render_template('index.html', blogs=blogs,quote = quote)
 
+@main.route('/new_post', methods=['POST','GET'])
+@login_required
+def new_blog():
+    subscribers = Subscriber.query.all()
+    form = CreateBlog()
+    if form.validate_on_submit():
+        title = form.title.data
+        description = form.description.data
+        content = form.content.data
+        user_id =  current_user._get_current_object().id
+        blog = Blog(title=title,description = description, content=content,user_id=user_id)
+        blog.save()
+        for subscriber in subscribers:
+            mail_message("New Blog Post","email/new_blog",subscriber.email,blog=blog)
+        return redirect(url_for('main.index'))
+    return render_template('post.html', form = form)
+
 @main.route('/user/<name>/updateprofile', methods = ['POST','GET'])
 @login_required
 def updateprofile(name):
