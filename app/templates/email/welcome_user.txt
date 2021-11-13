@@ -1,5 +1,5 @@
 <p>Hello {{user.username}}</p>
-<P>Welcome to the Peter Blog</P>
+<P>Welcome to the Albunus Blog</P>
 <p>We have just seen you have signed up for our application and want to welcome you to the amazing blogging site.</p>
 © 2021 GitHub, Inc.
 Terms

@@ -1,0 +1,10 @@
+Hello new subscriber!
+
+A new blog was posted
+
+Title: {{blog.title}}
+Post: {{blog.content|truncate(30)}}
+
+Regards,
+
+Albunus Blogs - Albunus Nyalita
