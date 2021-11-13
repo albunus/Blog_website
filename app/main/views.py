@@ -1,12 +1,11 @@
-from . import render_template, redirect,url_for,abort,request
+from flask import render_template,request,redirect,url_for,abort,flash,session
 from . import main
 from app.requests import get_quote
 from flask_login import login_required,current_user
 from ..models import Role,User,Blog,Comment,Subscriber
 from ..import db, photos
-import secrets
-import os
-from PIL import Image
+import os,secrets
+# from PIL import Image
 from .forms import UpdateProfile,CreateBlog,CommentForm
 from ..email import mail_message
 
@@ -70,7 +69,7 @@ def blog(id):
     comments = Comment.query.filter_by(blog_id=id).all()
     blog = Blog.query.get(id)
     return render_template('blog_page.html',blog=blog,comments=comments)
-    
+
 
 @main.route('/blog/<blog_id>/update', methods = ['GET','POST'])
 @login_required
@@ -84,21 +83,31 @@ def updateblog(blog_id):
         blog.description = form.description.data
         blog.content = form.content.data
         db.session.commit()
-        return redirect(url_for('main.blog',id = blog.id)) 
+        return redirect(url_for('main.blog',id = blog.id))
     if request.method == 'GET':
         form.title.data = blog.title
         form.description.data = blog.description
         form.content.data = blog.content
     return render_template('edit_blog.html', form = form)
 
-@main.route('/comment/<blog_id>', methods = ['Post','GET'])
+@main.route('/comment/new/<int:blog_id>', methods = ['GET','POST'])
 @login_required
-def comment(blog_id):
-    blog = Blog.query.get(blog_id)
-    comment =request.form.get('newcomment')
-    new_comment = Comment(comment = comment, user_id = current_user._get_current_object().id, blog_id=blog_id)
-    new_comment.save()
-    return redirect(url_for('main.blog',id = blog.id))
+def new_comment(blog_id):
+    form = CommentForm()
+    title = 'Add a comment'
+    blog = Blog.query.filter_by(id=blog_id).first()
+    if form.validate_on_submit():
+        comment = form.comment.data
+
+        new_comment = Comment(comment = comment,blog_id = blog_id, user_id=current_user.id)
+        db.session.add(new_comment)
+        db.session.commit()
+
+
+        return redirect(url_for('.view_comments', id= blog.id))
+
+
+    return render_template('add_comment.html', form = form,blog = blog,title=title  )
 
 @main.route('/subscribe',methods = ['POST','GET'])
 def subscribe():
