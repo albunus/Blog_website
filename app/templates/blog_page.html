@@ -24,10 +24,10 @@
       <p>Posted on :<small class="text-muted mr-2"> {{blog.time.strftime('%d-%m-%Y')}}</small> by
         {{blog.user.username}}</p>
       <div>
-        <form  action="{{url_for('main.comment',blog_id = blog.id)}}" method="POST">
+        <form  action="{{url_for('main.new_comment',blog_id = blog.id)}}" method="POST">
           <div class="md-form form-group">
             <!-- <i class="fa fa-lock prefix"></i> -->
-            <label for="form92">Type your comment</label><br>
+            <label for="form92"> You can Comment Here</label><br>
             <textarea id="comment" type="text" class="form-control" name="newcomment" required></textarea>
           </div>
           <div class="md-form form-group">
@@ -48,7 +48,7 @@
         {% for comment in comments %}
         <p class="mt-10"><span style="font-weight: bold">{{comment.user.username}} : </span> {{comment.comment}}</p>
         <a href="{{url_for('main.delete_comment', id = blog.id, comment_id = comment.id)}}"
-          class="btn text-white btn-danger"> <i class="far fa-trash-alt"></i><br>Delete
+          class="btn text-white btn-danger"> <i class="far fa-trash-alt"></i><br>Delete comment
         </a>
         {% endfor %}
       </div>

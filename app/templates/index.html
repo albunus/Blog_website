@@ -14,7 +14,7 @@
 
 {% block content %}
 <div class="container-fluid">
-  <div class="banner">
+  <div class="first">
     <h1>Welcome to Albunus Blog Website</h1>
     <span class="subheading"><i class="fas fa-quote-left"></i> <em class="quote">{{quote.quote}}</em> <i
         class="fas fa-quote-right"></i></span>
@@ -29,8 +29,8 @@
       </div>
     </form>
   </div>
-  <div class="row" id="blogsContainer">
-    <h1>Recent Blogs</h1>
+  <div class="row card second">
+    <h1>Latest Blogs</h1>
     {% for blog in blogs %}
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 all-blogs">
       <div class="">
@@ -38,17 +38,17 @@
         <h5>{{blog.description}}</h5>
         <p>Posted on :<small class="text-muted mr-2"> {{blog.time.strftime('%d-%m-%Y')}}</small> by <a
           href="user/{{blog.user.username}}">{{blog.user.username}}</a></p>
-        <p> <a class="btn btn-success" href="{{url_for('main.blog',id = blog.id)}}">{{blog.comment.count()}} <i class="far fa-comments"  style='font-size:30px;'></i></a></p>
+        <p> <a class="btn btn-success" href="{{url_for('main.blog',id = blog.id)}}">{{blog.comment.count()}} <i class="fas fa-comments"  style='font-size:30px;'></i></a></p>
 
       </div>
-    </div>
+    </div>   
 
     {% endfor %}
   </div>
 
 </div>
 <div class="container-fluid">
-  <footer class="text-center text-white" style="background-color: #584b53;">
+  <footer class="text-center text-white" style="background-color: ;">
     <!-- Grid container -->
     <div class="container pt-4">
       <!-- Section: Social media -->

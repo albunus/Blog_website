@@ -96,9 +96,10 @@ class Comment(db.Model):
     db.session.remove(self)
     db.session.commit()
 
-  def get_comment(id):
-    comment = Comment.query.all(id=id)
-    return comment
+  @classmethod
+  def get_comments(cls,id):
+    comments = Comment.query.filter_by(blog_id=id).all()
+    return comments 
 
 
   def __repr__(self):

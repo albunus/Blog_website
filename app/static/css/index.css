@@ -1,11 +1,12 @@
 .card:hover{
     box-shadow: 0 0 10px , 0 0 20px rgb(112, 108, 108), 0 0 40px rgb(112, 108, 108);
     border-radius: 10px;
-    background-color: white;
+    background-color: rgb(186, 212, 196);
 }
 
 body {
-    background-color: yellow;
+    background-color: rgb(207, 207, 32);
+    font-size: 20px;
   }
   nav {
     background-color: #1e6e05 !important;
@@ -13,8 +14,11 @@ body {
     padding-top: 1vh !important;
   }
   a {
-    color: white !important;
+    color: rgb(187, 25, 25) !important;
     
+  }
+  .Personal_profile{
+      margin-left: 3rem;
   }
   .dropdown a ,.user {
     color: #e4bb97 !important;
@@ -25,7 +29,7 @@ body {
     }
   }
   .dropdown-menu, .open {
-    background-color: #584b53 !important;
+    background-color: #520b36 !important;
     padding: 3px !important;
   }
   .text-centre, .testimonial-card {
@@ -43,12 +47,16 @@ body {
   }
   table {
     border: 1.5px solid #584b53 !important;
+    
   }
-  .banner {
-    background-color: #fef5ef;
-    height: 600px;
+  .first {
+    background-image: url(https://images.unsplash.com/photo-1595113316349-9fa4eb24f884?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1172&q=80);
     text-align: center;
-    padding: 5% 10% 5% 10%;
+    padding: 10% 20% 10% 20%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    
   }
   #userTable {
     font-family: Arial, Helvetica, sans-serif;
@@ -79,9 +87,13 @@ body {
     background-color: #04AA6D;
     color: white;
   }
+  .user{
+      background-color: purple;
+  }
   .quote {
     font-size: 20px;
-    color: #337AB7;
+    color: red;
+    font-size: 20px;
   }
   .subscribe {
     color: green;
@@ -91,13 +103,14 @@ body {
   }
   #post {
     border: 1.5px solid #fef5ef !important;
+    border-radius: 30px 0px 30px 0px;
+    background-color: purple;
+    padding: 2rem;
+    margin-left:  2rem;
   }
   h1 {
     text-align: center;
     color: #584b53;
-  }
-  #blogsContainer {
-    margin: 6vh;
   }
   .user-img {
     width: 2cm !important;
@@ -113,9 +126,11 @@ body {
   }
   .all-blogs {
     padding: 2rem !important;
-    border: 1.5px solid #584b53 !important;
+    border: 0.5rem solid #7c1a56 !important;
     height: 25vh !important;
     overflow-y: auto !important;
+    background-color: rgb(62, 235, 128);
+    font-size: 20px;
   }
   .user-blogs {
     padding: 2rem !important;
@@ -123,18 +138,17 @@ body {
     height: auto !important;
   }
   footer {
-    color: #e4bb97;
+    color: purple;
   }
   footer a {
-    color: #e4bb97 !important;
+    color: #16149e !important;
   }
   @media (max-width: 500px) {
     .user-blogs, .all-blogs {
       height: auto !important;
     }
-    #blogsContainer {
-      margin: 0 !important;
-    }
+    
+
     .banner {
       height: auto;
       text-align: center;

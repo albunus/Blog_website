@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+body{
+background-color: yellowgreen;
+   
+}
+.comment{
+  margin-top: 6%;
+    
+    width: 430px;
+    height: 430px;
+    left: 200px;
+
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 20px;
+}
+.card {
+    /*animates card elements*/
+    margin: 3%;
+    width: 70rem;
+    background-color: rgba(255, 255, 255, 0.705);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 17px rgba(48, 6, 42, 0.35);
+    transition: all 0.3s ease-in-out;
+
+  }
+
+.card:hover {
+
+    transform: translateY(-7px);
+  }
+  
+  
+  .cards {
+   
+    display: flex;
+    flex-wrap: wrap;
+    margin-top:5%;
+    margin-left: 30%;
+    
+    
+  }
+  .blockquote {
+    font-family: 'Montserrat', sans-serif;;
+    color: black;
+  }

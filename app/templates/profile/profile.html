@@ -20,9 +20,9 @@
         <div class="card-img">
           {% if user.profile_pic_path %}
           <img  src="{{url_for('static',filename=user.profile_pic_path)}}" style="height:300px;border-radius: 1%"
-            class="card-img" alt="woman avatar"><br>
+            class="card-img card" alt="woman avatar"><br>
           {%else%}
-          <div><i class='fas fa-user-alt' style='font-size:120px;color: #584b53'></i></div>
+          <div><i class='fas fa-user-alt Personal_profile' style='font-size:100px;color: #584b53'></i></div>
           <div id="imgform">
             <form action="{{url_for('main.profile',name=user.username)}}" method="post" enctype="multipart/form-data">
               <input type="file" name="photo" class="form-control" required>
@@ -33,7 +33,7 @@
           {% endif %}
         </div>
 
-        <div class="card-body">
+        <div class="card-body card">
         {% if user.bio %}
           <p><i class="fas fa-quote-left"></i> {{user.bio}}</p>
           {%else%}
@@ -48,7 +48,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 Personal_profile">
       <h2>Personal Details</h2>
       <table id="userTable" class="table table-bordered">
         <tr>
@@ -70,5 +70,47 @@
       </table>
     </div>
   </div>
+</div>
+
+<div class="container-fluid">
+  <footer class="text-center text-white" style="background-color: ;">
+    <!-- Grid container -->
+    <div class="container pt-4">
+      <!-- Section: Social media -->
+      <section class="mb-4">
+        <!-- Facebook -->
+        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+          data-mdb-ripple-color="dark"><i class="fab fa-facebook-f"></i></a>
+
+        <!-- Twitter -->
+        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+          data-mdb-ripple-color="dark"><i class="fab fa-twitter"></i></a>
+
+        <!-- Google -->
+        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+          data-mdb-ripple-color="dark"><i class="fab fa-google"></i></a>
+
+        <!-- Instagram -->
+        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+          data-mdb-ripple-color="dark"><i class="fab fa-instagram"></i></a>
+
+        <!-- Linkedin -->
+        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+          data-mdb-ripple-color="dark"><i class="fab fa-linkedin"></i></a>
+        <!-- Github -->
+        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+          data-mdb-ripple-color="dark"><i class="fab fa-github"></i></a>
+      </section>
+      <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2021 Copyright:
+      <a class="text-dark" href="https://github.com/albunus/Blog_website/" target="_blank">blogs@albunus.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
 </div>
 {% endblock %}

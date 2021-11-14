@@ -109,12 +109,19 @@ def new_comment(blog_id):
 
     return render_template('add_comment.html', form = form,blog = blog,title=title  )
 
+@main.route('/view_comments/<id>')
+@login_required
+def view_comments(id):
+    comment = Comment.get_comments(id)
+    title = 'View Comments'
+    return render_template('comment.html', comment=comment, title=title)
+
 @main.route('/subscribe',methods = ['POST','GET'])
 def subscribe():
     email = request.form.get('subscriber')
     new_subscriber = Subscriber(email = email)
     new_subscriber.save_subscriber()
-    mail_message("Subscribed to Niche Blogs","email/welcome_subscriber",new_subscriber.email,new_subscriber=new_subscriber)
+    mail_message("Subscribed to Albunus Blogs","email/welcome_subscriber",new_subscriber.email,new_subscriber=new_subscriber)
     return redirect(url_for('main.index'))
 
 @main.route('/blog/<blog_id>/delete', methods = ['POST'])
