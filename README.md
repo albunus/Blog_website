@@ -1,16 +1,19 @@
 # Blog_website
+## Description
 This is a personal blogging website where you can create and share your opinions and other users can read and comment on them. 
 Additionally, add a feature that displays random quotes to inspire your users.
 ## Author
 Albunus Nyalita
-*****
-## Description
-This is a blogging site for creating and sharing opinions and other users can read and comment on them. 
-*****
+
 ### Landing page
+Displaying random quotes using API
 
 *****
+
 ### User Blogs
+
+*****
+### Subscribers
 
 *****
 ### Delete Own Blog
